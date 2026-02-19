@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg-primary: #f4ece1;
+  /* Light brown touch */
+  --color-sidebar-bg: #ede0d4;
+  /* Warm sand */
+  --color-chat-bg: #faf7f2;
+  /* Soft parchment */
+  --color-text-primary: #4e342e;
+  --color-text-secondary: #8d6e63;
+  --color-accent-brown: #6d4c41;
+  --color-accent-gold: #d4a373;
+  --color-border-light: #e0dace;
+  --color-user-msg-bg: #f2ebe1;
+  --color-input-bg: #ffffff;
+}
+
+@layer base {
+  body {
+    @apply bg-bg-primary text-text-primary font-sans overflow-hidden antialiased;
+  }
+}
+
+@layer components {
+  .urdu-text {
+    font-family: 'Noto Nastaliq Urdu', 'Noto Naskh Urdu', serif;
+    direction: rtl;
+    /* Nastaliq needs significant leading to prevent clipping */
+    @apply leading-[3.2rem] tracking-normal;
+  }
+
+  .premium-gradient-text {
+    @apply bg-gradient-to-r from-accent-brown via-text-primary to-accent-gold bg-clip-text text-transparent font-bold;
+  }
+
+  .sidebar-transition {
+    transition-property: width, transform, padding, opacity;
+    transition-duration: 300ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+@font-face {
+  font-family: 'Noto Nastaliq Urdu';
+  src: url('https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&display=swap');
+}
+
+@font-face {
+  font-family: 'Noto Naskh Urdu';
+  src: url('https://fonts.googleapis.com/css2?family=Noto+Naskh+Urdu:wght@400;700&display=swap');
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+}
