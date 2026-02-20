@@ -80,8 +80,8 @@ const ChatFeature = ({ messages, setMessages, isLoading, setIsLoading }) => {
                                     </svg>
                                 )}
                             </div>
-                            <div className={`max-w-[85%] flex flex-col ${msg.role === 'user' ? 'items-end' : 'items-start'}`}>
-                                <div className={`p-5 rounded-3xl shadow-sm text-base leading-relaxed ${msg.role === 'user'
+                            <div className={`max-w-[90%] md:max-w-[85%] flex flex-col ${msg.role === 'user' ? 'items-end' : 'items-start'}`}>
+                                <div className={`p-4 md:p-5 rounded-2xl md:rounded-3xl shadow-sm text-sm md:text-base leading-relaxed ${msg.role === 'user'
                                     ? 'bg-user-msg-bg text-text-primary rounded-tr-sm border border-border-light'
                                     : 'bg-white text-text-primary border border-border-light'
                                     } ${msg.isUrdu ? 'urdu-text' : ''}`}>
@@ -94,7 +94,7 @@ const ChatFeature = ({ messages, setMessages, isLoading, setIsLoading }) => {
                         </div>
                     ))}
                     {isLoading && (
-                        <div className="flex gap-5 mb-10 w-full">
+                        <div className="flex gap-4 md:gap-5 mb-10 w-full">
                             <div className="w-10 h-10 rounded-full bg-accent-brown flex items-center justify-center mt-1 shadow-md">
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 8V4H8" /><rect width="16" height="12" x="4" y="8" rx="2" /><path d="M2 14h2" /><path d="M20 14h2" /><path d="M15 13v2" /><path d="M9 13v2" /></svg>
                             </div>
@@ -109,12 +109,12 @@ const ChatFeature = ({ messages, setMessages, isLoading, setIsLoading }) => {
             </div>
 
             {/* Input */}
-            <div className="p-6 md:pb-10 flex justify-center bg-chat-bg">
+            <div className="p-4 md:p-6 md:pb-10 flex justify-center bg-chat-bg">
                 <div className="w-full max-w-3xl relative group">
                     <textarea
-                        className="w-full bg-bg-primary border border-border-light rounded-[32px] p-4 pr-16 text-text-primary text-base outline-none resize-none focus:border-accent-gold focus:ring-2 focus:ring-accent-gold/10 transition-all min-h-[64px] shadow-sm hover:border-accent-gold/50"
+                        className="w-full bg-bg-primary border border-border-light rounded-[24px] md:rounded-[32px] p-3 md:p-4 pr-14 md:pr-16 text-text-primary text-sm md:text-base outline-none resize-none focus:border-accent-gold focus:ring-2 focus:ring-accent-gold/10 transition-all min-h-[56px] md:min-h-[64px] shadow-sm hover:border-accent-gold/50"
                         rows="1"
-                        placeholder="شروع کریں (مثلاً: ایک دفعہ کا...)"
+                        placeholder="شروع کریں..."
                         value={input}
                         onChange={(e) => {
                             setInput(e.target.value);

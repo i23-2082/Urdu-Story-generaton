@@ -13,12 +13,15 @@ function App() {
     }
   ]);
   const [isLoading, setIsLoading] = useState(false);
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(window.innerWidth > 768);
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [initialToggleMode, setInitialToggleMode] = useState('login');
 
-  const onNewStory = () => setMessages([messages[0]]);
+  const onNewStory = () => {
+    setMessages([messages[0]]);
+    if (window.innerWidth <= 768) setIsSidebarOpen(false);
+  };
 
   const openAuth = (mode) => {
     setInitialToggleMode(mode);
@@ -34,18 +37,26 @@ function App() {
         initialMode={initialToggleMode}
       />
 
+      {isSidebarOpen && window.innerWidth <= 768 && (
+        <div
+          className="mobile-overlay"
+          onClick={() => setIsSidebarOpen(false)}
+        />
+      )}
+
       <SidebarFeature
         isOpen={isSidebarOpen}
+        setIsOpen={setIsSidebarOpen}
         onNewStory={onNewStory}
         isLoggedIn={isLoggedIn}
         onAuthClick={openAuth}
       />
 
       <main className="flex-1 flex flex-col relative h-full">
-        <header className="h-16 px-6 flex items-center justify-between bg-chat-bg/90 backdrop-blur-md sticky top-0 z-40">
+        <header className="h-16 px-4 md:px-6 flex items-center justify-between bg-chat-bg/90 backdrop-blur-md sticky top-0 z-40 border-b border-border-light/50">
           <div className="flex items-center">
             <button
-              className="p-2 mr-4 rounded-lg text-text-secondary hover:text-text-primary hover:bg-bg-primary transition-all focus:outline-none group"
+              className="p-2 mr-2 md:mr-4 rounded-lg text-text-secondary hover:text-text-primary hover:bg-bg-primary transition-all focus:outline-none group"
               onClick={() => setIsSidebarOpen(!isSidebarOpen)}
             >
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -56,11 +67,11 @@ function App() {
                 )}
               </svg>
             </button>
-            <div className="flex items-center gap-3 overflow-visible h-full">
-              <div className="w-12 h-12 rounded-full overflow-hidden border border-accent-gold/30 shadow-md bg-white shrink-0">
+            <div className="flex items-center gap-2 md:gap-3 overflow-visible h-full">
+              <div className="w-10 h-10 md:w-12 md:h-12 rounded-full overflow-hidden border border-accent-gold/30 shadow-md bg-white shrink-0">
                 <img src="/images/kaf ki khani.jpeg" alt="Logo" className="w-full h-full object-cover scale-110" />
               </div>
-              <h1 className="premium-gradient-text text-2xl urdu-text flex items-center select-none h-full pr-8 pb-1">
+              <h1 className="premium-gradient-text text-lg md:text-2xl urdu-text flex items-center select-none h-full pr-4 md:pr-8 pb-1">
                 کاف کی کہانی
               </h1>
             </div>

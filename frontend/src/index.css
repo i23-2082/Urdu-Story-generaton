@@ -39,6 +39,21 @@
     transition-duration: 300ms;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   }
+
+  /* Mobile Responsive Utilities */
+  .mobile-overlay {
+    @apply fixed inset-0 bg-black/40 backdrop-blur-sm z-40 transition-opacity duration-300;
+  }
+
+  @media (max-width: 768px) {
+    .urdu-text {
+      @apply leading-[2.8rem] text-sm;
+    }
+
+    .premium-gradient-text {
+      @apply text-xl;
+    }
+  }
 }
 
 @font-face {
